@@ -22,4 +22,4 @@ phases:
     commands:
       - echo Build completed on `date`
       - make defconfig
-      - make -j 4
+      - make -j4 V=s
