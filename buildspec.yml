@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing OpenWrt...
+      - apt-get update -y
+      - apt-get install git-core build-essential libssl-dev libncurses5-dev unzip gawk zlib1g-dev -y
+      - apt-get install subversion mercurial -y
+
+  pre_build:
+    commands:
+      - echo Clonning git repository for OpenWrt ...
+      - git clone https://github.com/openwrt/openwrt.git
+  build:
+    commands:
+      - echo Build started on `date`
+      - cd openwrt
+      - ./scripts/feeds update -a
+      - ./scripts/feeds install -a
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - make defconfig
+      - make
