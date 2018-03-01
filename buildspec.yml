@@ -21,5 +21,5 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-      - make defconfig
-      - make -j1
+      - sudo make defconfig
+      - sudo make -j1
